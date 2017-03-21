@@ -13,32 +13,37 @@ import static org.junit.Assert.assertEquals;
  * Created by sindh on 20/03/2017.
  */
 public class PmsDefs {
-   private WebDriver driver;
+    private WebDriver driver;
     private pms pmsObj;
     private CheckLoginPage pmsLogin;
 
     @Given("^Open Chrome\\(browser\\) and start application$")
     public void Open_Chrome_browser_and_start_application() throws Throwable {
-        System.setProperty("webdriver.chrome.driver","C:\\Users\\sindh\\Desktop\\Training\\AllDriversNew\\chromedriver.exe" );
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\sindh\\Desktop\\Training\\AllDriversNew\\chromedriver.exe");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
         driver = new ChromeDriver(chromeOptions);
         // Express the Regexp above with the code you wish you had
-       // throw new PendingException();
+        // throw new PendingException();
     }
 
-    @When("^I provide valid  username and password$")
-    public void I_provide_valid_username_and_password() throws Throwable {
-        pms pmsObj = new pms(driver);
-        pmsLogin = pmsObj.trylogin("sunny@gmail.com","12345");
-        String actualHeading =  pmsLogin.getCurrentPage();
-        String expectedHeading ="http://localhost:8080/pms/viewparish.action";
+
+    @When("^I provide valid uname \"([^\"]*)\" and valid pwd \"([^\"]*)\"$")
+    public void I_provide_valid_uname_and_valid_pwd(String arg1, String arg2) throws Throwable {   // Express the Regexp above with the code you wish you had
+       pms pmsObj = new pms(driver);
+       pmsLogin = pmsObj.trylogin(arg1, arg2);
+
+   }
+    @Then("^user should be able to login$")
+    public void user_should_be_able_to_login() throws Throwable {
+        String actualHeading = pmsLogin.getCurrentPage();
+        String expectedHeading = "http://localhost:8080/pms/viewparish.action";
         assertEquals(expectedHeading, actualHeading);
     }
 
-    @Then("^user should be able to login$")
-    public void user_should_be_able_to_login() throws Throwable {
-       driver.quit();
-    }
+    @Then("^user should be able to quit and close$")
+    public void user_should_be_able_to_quit_and_close() throws Throwable {
+        driver.quit();
 
+    }
 }
