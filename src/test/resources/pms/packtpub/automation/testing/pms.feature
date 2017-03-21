@@ -11,4 +11,4 @@ Feature: Test smoke scenarios of Parish Management Ssystem (PMS)
 
     Examples:
       |username            | password   |
-      |sunny@gmail.com     | 12345   |
+      |sunny@gmail.com     | 1234   |
