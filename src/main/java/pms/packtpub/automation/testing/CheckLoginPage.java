@@ -5,9 +5,11 @@ import org.openqa.selenium.WebDriver;
  * Created by sindh on 20/03/2017.
  */
 public class CheckLoginPage {
+
+
     private WebDriver driver;
 
-    public CheckLoginPage(WebDriver driver) throws WrongPageException {
+    public CheckLoginPage(WebDriver driver) {
         this.driver = driver;
         if (!driver.getTitle().equals("PMS")){
             throw new WrongPageException("Incorrect Login ");
@@ -18,4 +20,5 @@ public class CheckLoginPage {
         String actualHeading = driver.getCurrentUrl();
         return actualHeading;
     }
+
 }

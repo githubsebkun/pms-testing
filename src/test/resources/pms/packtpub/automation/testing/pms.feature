@@ -1,7 +1,6 @@
 Feature: Test smoke scenarios of Parish Management Ssystem (PMS)
 
 
-
   Scenario Outline: Test PMS with valid credentials
 
     Given Open Chrome(browser) and start application
@@ -10,5 +9,5 @@ Feature: Test smoke scenarios of Parish Management Ssystem (PMS)
     Then user should be able to quit and close
 
     Examples:
-      |username            | password   |
-      |sunny@gmail.com     | 1234   |
+      | username        | password |
+      | sunny@gmail.com | 12345    |

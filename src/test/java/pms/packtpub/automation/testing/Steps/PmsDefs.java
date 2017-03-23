@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import pms.packtpub.automation.testing.CheckLoginPage;
 import pms.packtpub.automation.testing.pms;
+
+
 import static org.junit.Assert.assertEquals;
 /**
  * Created by sindh on 20/03/2017.
@@ -25,6 +27,13 @@ public class PmsDefs {
         driver = new ChromeDriver(chromeOptions);
         // Express the Regexp above with the code you wish you had
         // throw new PendingException();
+        //TODO: if you are running sauselabs use the three line scripts below
+        //make sure sauselab is up by creating tunnels.  details are in notepad file in D:\study
+        //make sure URL to login is added properly in class pms
+       /* URL url = new URL("http://sibkun:188aa5e3-9799-4c1a-8ff5-f79f87637d2f@ondemand.saucelabs.com:80/wd/hub");
+        Capabilities capabilities = DesiredCapabilities.firefox();
+        driver = new RemoteWebDriver(url, capabilities);*/
+
     }
 
 

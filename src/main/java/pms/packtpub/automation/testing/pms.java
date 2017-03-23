@@ -16,14 +16,16 @@ public class pms {private WebDriver driver;
         this.driver = driver;
         //driver.manage().window().maximize();
         baseUrl = "http://localhost:8080/pms";
+        //TODO: if testing is in Sauce Labs do the URL below
+        //baseUrl="http://pms.heart4needy.com";
         driver.get(baseUrl + "/");
         WebElement myDynamicElement = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#loginForm1")));
         if (!driver.getTitle().equals("PMS-Parish Management System")) {
-           // throw new WrongPageException("Incorrect page for PMS login Check your page");
+            throw new WrongPageException("Incorrect page for PMS login Check your page");
         }
     }
-    public CheckLoginPage trylogin(String uid, String pwd) throws Exception, WrongPageException {
+    public CheckLoginPage trylogin(String uid, String pwd) throws Exception {
         driver.findElement(By.cssSelector("#loginForm1 > #email")).clear();
         driver.findElement(By.cssSelector("#loginForm1 > #email")).sendKeys(uid);
         driver.findElement(By.id("password")).clear();
